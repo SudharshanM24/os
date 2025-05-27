@@ -1,0 +1,14 @@
+ #include <stdio.h>
+ #include <pthread.h>
+ void* myThread(void* arg) {
+    printf("Hello from thread %d\n", *(int*)arg);
+    return NULL;
+ }
+ int main() {
+    pthread_t t1;
+    int id = 1;
+    pthread_create(&t1, NULL, myThread, &id);
+    pthread_join(t1, NULL);
+    printf("Thread finished\n");
+    return 0;
+}
